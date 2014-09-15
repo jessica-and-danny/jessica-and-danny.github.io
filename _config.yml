@@ -1,0 +1,55 @@
+# Dependencies
+markdown:	redcarpet
+highlighter:	pygments
+
+# Permalinks
+permalink:	/blog/:title
+
+# Setup
+title:		Danny &hearts; Jessica
+tagline:	''
+description:	'Fang &hearts; Liang'
+url:		''
+
+author:
+  name:		'Angus'
+  url:		https://angusjune.com
+
+paginate:	5
+
+# Custom vars
+icon:		/assets/images/icon.png
+cover:		/assets/images/cover.jpg
+
+# social:
+#   - icon:	twitter
+#     url:	https://twitter.com/iancamporez
+#     desc:	Follow me on twitter
+#
+#   - icon:	github
+#     url:	https://github.com/camporez
+#     desc:	Fork me on github
+#
+#   - icon:	googleplus-alt
+#     url:	https://google.com/+IanCamporezBrunelli
+#     desc:	Add me on google+
+#
+#   - icon:	feed
+#     url:	http://camporez.com/atom.xml
+#     desc:	Subscribe to my feed
+
+menu:
+  - title:	Home
+    url:	/
+
+  - title:	Photos
+    url:	/photos
+
+  - discuss: Discuss
+    url: /discuss
+
+# copyright:
+#   author:	Angus
+#   url:		http://angusjune.com
+#   type_title:	Some rights reserved
+#   type_url:	http://creativecommons.org/licenses/by-nc/2.5

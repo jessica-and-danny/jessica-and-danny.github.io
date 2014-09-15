@@ -1,0 +1,132 @@
+---
+layout: default
+title: Home
+---
+
+<div id="skrollr-body">
+
+<div class="hero">
+	<hgroup data-0="opacity: 1" data-250="opacity: 0">
+		<h1 class="hero__name hero__name--fang">Jessica Fang</h1>
+		<h2 class="hero__and">and</h2>
+		<h1 class="hero__name hero__name--liang">Danny Liang</h1>
+	</hgroup>
+	<div class="hero__heart--1 hero__heart"
+	  data-0="transform: translate(0px, 0px);"
+		data-120="transform: translate(-100px, -200px);"
+		data-250="transform: translate(200px, -800px);">
+		&hearts;
+	</div>
+
+	<div class="hero__heart--2 hero__heart"
+	  data-0="transform: translate(0px, 0px);"
+		data-100="transform: translate(-100px, -300px);"
+		data-180="transform: translate(-400px, -800px);">
+		&hearts;
+	</div>
+
+	<div class="hero__heart--3 hero__heart"
+	  data-0="transform: translate(0px, 0px);"
+		data-80="transform: translate(120px, -240px);"
+		data-220="transform: translate(400px, -800px);">
+		&hearts;
+	</div>
+
+	<div class="hero__heart--4 hero__heart"
+		data-0="transform: translate(0px, 0px);"
+		data-100="transform: translate(120px, -300px);"
+		data-200="transform: translate(380px, -800px);">
+		&hearts;
+	</div>
+
+	<div class="hero__heart--5 hero__heart"
+		data-0="transform: translate(0px, 0px);"
+		data-150="transform: translate(-120px, -280px);"
+		data-220="transform: translate(300px, -800px);">
+		&hearts;
+	</div>
+
+	<div class="hero__scroll" data-0="opacity:1;" data-center-top="opacity:0;"></div>
+</div>
+
+<div class="invitation-wrap">
+	<div class="invitation"
+		data-center-top="top:0px;"
+		data--100-center-top="top:40px;">
+
+      <div class="envelope"></div>
+
+			<div class="letter"
+				data-180-center-top="z-index:0;top:-100px;"
+				data-130-center-top="z-index:4;"
+				data-30-center-top="top:-140px;"
+				data-center-top="top: -200px;transform: scale(0.5) rotateZ(90deg);z-index:5;"
+				data--60-center-top="transform:scale(1) rotateZ(0deg);"
+				data--100-center-top="top:-120px;">
+
+				<div class="letter__inner"
+					data-center-top="transform:rotateY(0deg)"
+					data--30-center-top="transform:rotateY(360deg);">
+
+
+				<div class="letter__front">
+					<div class="letter__front__inner">
+						<p class="letter__text--p1 letter__text"></p>
+						<p class="letter__text--p2 letter__text"></p>
+						<p class="letter__text--p3 letter__text"></p>
+						<a href="#" class="letter__link letter__link--map"></a>
+					</div>
+				</div>
+
+				<div class="letter__back">
+					<div class="letter__back__inner">
+						<a href="http://amap.com/088atg" class="view-map">查看地图</a>
+						<a href="#" class="letter__link letter__link--back"></a>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+			<!-- /.letter -->
+
+      <div class="envelope--front" data-0="z-index:3"  data-120-center-top="z-index:4"></div>
+
+      <div class="seal">
+        <div class="seal__inner-wrap">
+          <div class="seal__inner" data-180-center-top="transform: rotateX(0deg);" data-30-center-top="transform: rotateX(180deg);">
+            <div class="seal__inner__front"></div>
+            <div class="seal__inner__back"></div>
+          </div>
+        </div>
+      </div>
+			<!-- /.open -->
+    </div>
+</div>
+
+<footer data-60-bottom-bottom="opacity:0;z-index:-1;" data-bottom-bottom="opacity:1;z-index:6;" class="footer footer--index"><a href="album.html" class="footer__link">相册</a></footer>
+
+
+</div>
+<!-- /#skrollr-body -->
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/skrollr.min.js"></script>
+<script src="assets/js/jquery.backstretch.min.js"></script>
+<script>
+	var s = skrollr.init();
+
+	$.backstretch('http://i2.tietuku.com/4b9906b17352cc1a.jpg');
+
+	$letter = $('.letter');
+
+	$('.letter__link--map').on('click',function(e){
+		e.preventDefault();
+		$letter.addClass('active');
+	});
+
+	$('.letter__link--back').on('click', function(e){
+		e.preventDefault();
+		$letter.removeClass('active');
+	});
+</script>

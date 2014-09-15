@@ -1,0 +1,447 @@
+@import "normalize";
+@import "compass/css3";
+/* @import url(http://fonts.googleapis.com/css?family=Parisienne); */
+
+@font-face {
+    font-family: 'Parisienne';
+    src: url('../fonts/parisienne_regular-webfont.eot');
+    src: url('../fonts/parisienne_regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/parisienne_regular-webfont.ttf') format('truetype'),
+         url('../fonts/parisienne_regular-webfont.svg#parisienner') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+$handwriting-font: 'Parisienne', cursive;
+
+html, body {
+  height: 100%;
+  font-size: 13px;
+}
+
+$hero-height: 40em;
+$invitation-top: $hero-height + 6em;
+
+.hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: $hero-height;
+
+  @media screen and (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 450px) {
+    background-position: top center;
+    background-size: 800px 533px;
+  }
+
+  &__scroll {
+    width: 50px;
+    height: 50px;
+    background: image-url('scroll@2x.png') no-repeat;
+    background-size: 50px 50px;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    margin-left: -25px;
+  }
+
+  hgroup {
+    -webkit-transform: translateZ(0); //fixed blur on retina
+    position: relative;
+    top: 30%;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  }
+
+  &__and {
+    $fs: 1.4em;
+    $lh: 1;
+
+    position: relative;
+    font: italic 200 $fs#{'/'}$lh "HelveticaNeue-Light", "Helvetica Neue Light",'Helvetica Neue', sans-serif;
+    margin: 0;
+  }
+
+  &__name {
+    font: 4em/1.4 $handwriting-font, Helvetica, sans-serif normal;
+    margin: 0;
+  }
+
+  $heart-color: #c03e3e;
+  $heart-size: 2em;
+
+  &__heart {
+    font-size: $heart-size;
+    color: $heart-color;
+    position: absolute;
+    bottom: -4em;
+    left: 50%;
+
+    &--2 {
+      color: lighten($heart-color, 20%);
+    }
+
+    &--3 {
+      color: darken($heart-color, 20%);
+    }
+  }
+}
+
+.invitation-wrap {
+  position: absolute;
+  left: 50%;
+  margin-top: $invitation-top;
+}
+
+$ic: #ffc0cb; //invitation-color
+$ew: 220px;   //envelope-width
+$eh: 180px;   //envelope-height
+$ls: 2;       //letter-scale
+
+$lw: ($eh - 20px) * $ls;
+$lh: ($ew - 20px) * $ls;
+
+.invitation {
+  position: relative;
+  left: -50%;
+  width: $ew;
+  margin: auto;
+}
+
+.envelope {
+  position: absolute;
+  width: $ew;
+  height: $eh;
+  background: image-url('back.png') no-repeat;
+  background-size: $ew $eh;
+}
+
+.envelope--front {
+  position: absolute;
+  width: $ew;
+  height: $eh;
+  background: image-url('front.png') no-repeat;
+  background-size: $ew $eh
+}
+
+.letter {
+  //$lw: ($eh * 4 / 5) * $ls; //letter-width
+  //$lh: ($ew * 4 / 5) * $ls; //letter-height
+
+  @include transform(scale(1 / $ls) rotateZ(90deg));
+  @include transform-origin(50%);
+  @include perspective($lw);
+  position: absolute;
+  left: - 50px;
+  top: -100px;
+  background: transparent;
+
+  &__inner {
+    @include transition(transform 0.3s);
+    @include transform-style(preserve-3d);
+    /* @include transform-3d(0, 0, 0); */
+    position: relative;
+
+    width: $lw;
+    height: $lh;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .06);
+
+    .letter.active & {
+      @include transform(rotateY(180deg) !important);
+    }
+  }
+
+  &__front, &__back {
+    @include backface-visibility(hidden);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  &__front {
+    background: image-url('happiness@2x.png') no-repeat #C04B60 center 30px;
+    background-size: 56px 56px;
+    color: #fff;
+  }
+
+  &__back {
+    @include transform(rotateY(180deg));
+    background: image-url('map@2x.png') no-repeat #FFF9F9;
+    background-size: 320px 400px;
+  }
+
+  &__text {
+    display: block;
+    margin: auto;
+    text-align:center;
+    background-repeat: no-repeat;
+
+    &--p1 {
+      width: 64px;
+      height: 17px;
+      background-image: image-url('letter-p1@2x.png');
+      background-size: 64px 17px;
+      margin-top: 100px;
+    }
+
+    &--p2 {
+      width: 290px;
+      height: 158px;
+      background-image: image-url('letter-p2@2x.png');
+      background-size: 290px 158px;
+      margin-top: 16px;
+    }
+
+    &--p3 {
+      width: 64px;
+      height: 45px;
+      background-image: image-url('letter-p3@2x.png');
+      background-size: 64px 45px;
+      margin-top: 16px;
+    }
+  }
+
+  &__link {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
+
+    &--map {
+      right: 0;
+      background-image: image-url('btn-map@2x.png');
+
+      .letter.active & {
+        display: none;
+      }
+    }
+
+    &--back {
+      right: 0;
+      z-index: 999;
+      background-image: image-url('btn-back@2x.png');
+    }
+  }
+}
+
+.view-map {
+  display: inline-block;
+  text-align: center;
+  color: #fff;
+  background: rgba(0,0,0,.6);
+  padding: 8px 12px;
+  /* position: absolute; */
+  bottom: 0;
+  text-decoration: none;
+}
+
+$sw: 222px; // seal width
+$sh: 136px; // seal height
+
+.seal {
+  position: absolute;
+  z-index: 3;
+
+  /* .invitation:hover & .card, .invitation.active & .card {
+    @include transform(rotateX(180deg));
+  } */
+
+  &__inner-wrap, &__inner__front, &__inner__back {
+    position: absolute;
+    height: $eh;
+    width: $ew;
+  }
+
+  &__inner-wrap {
+    @include perspective($eh * 2);
+  }
+
+  &__inner {
+    @include transform-style(preserve-3d);
+    position: relative;
+
+    &__front, &__back {
+      @include backface-visibility(hidden);
+      background: transparent;
+      width: $sw;
+      height: $sh;
+      background-size: $sw $sh;
+      background-repeat: no-repeat;
+      top: -2px;
+      left: -1px;
+    }
+
+    &__front {
+      background-image: image-url('seal.png');
+      z-index: 5;
+    }
+
+    &__back {
+      @include transform(rotateX(180deg));
+      background-image: image-url('seal-back.png');
+      z-index: 2;
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  padding: 3em 0 2em;
+
+  text-align: center;
+  font-size: 1.2em;
+
+  a {
+    padding: 0.5em 1em;
+    color: #fff;
+    background-color: #C04B60;
+    text-decoration: none;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    border-radius: 3px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+  }
+
+  &--index {
+    position: absolute;
+    left: 0;
+    top: $invitation-top + 12em;
+
+    a {
+      box-shadow: none;
+    }
+  }
+}
+
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+
+  img {
+    display: block;
+  }
+}
+
+.album {
+
+  &__title {
+    text-align: center;
+    font-weight: normal;
+    font-size: 2.4em;
+    font-family: $handwriting-font;
+    color: $ic;
+  }
+
+  .container {
+    width: 283px;
+    margin: auto;
+    text-align: center;
+  }
+
+  .item {
+    max-width: 20em;
+    margin: 1em;
+    padding: 0.2em;
+    border-radius: 4px;
+    border: 1px solid #e4e4e4;
+    box-shadow: 0 2px 6px rgba(0, 0 ,0, .1);
+
+    background-color: #fff;
+
+    img {
+      display: block;
+      max-width: 100%;
+      min-height: 5em;
+      background-color: #ffefef;
+    }
+  }
+
+  .comment {
+    padding: 3em 2em;
+    background: rgba(255, 255, 255, .8);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+    margin-top: 3em;
+
+    .nav {
+      display: none;
+    }
+
+    .global-nav {
+      display: none;
+    }
+  }
+
+  .Social-Login {
+    .Social {
+      display: none;
+    }
+
+    .Login .btn {
+      background: $ic;
+    }
+  }
+}
+
+#nicknamesg, #uyan_top, #uyan_ottype, #uyan-copyright, .uyan_cmt_exp {
+  display: none;
+}
+
+#uyan_cmt_btn {
+  background: #fff !important;
+  font-weight: normal !important;
+
+  &:hover {
+    background: #ddd !important;
+  }
+}
+
+@media(min-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  .hero {
+    &__name {
+      font-size: 6em;
+    }
+  }
+
+  .album {
+    .container {
+      width: 100%;
+    }
+
+    .comment {
+      width: 28em;
+      margin: auto;
+    }
+  }
+}
+
+@media(min-width: 1000px) {
+  body {
+    font-size: 16px;
+  }
+
+  .album {
+    .comment {
+      width: 50em;
+    }
+  }
+}
